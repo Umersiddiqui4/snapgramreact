@@ -20,6 +20,7 @@ export async function createUserAccount(user: INewUser) {
     if (!newAccount) throw Error;
 
     const avatarUrl = avatars.getInitials(user.name);
+console.log(user,'user');
 
     const newUser = await saveUserToDB({
       accountId: newAccount.$id,
@@ -44,7 +45,14 @@ export async function saveUserToDB(user: {
   imageUrl: URL;
   username?: string;
 }) {
+  console.log(user,'usersave');
+  
   try {
+    // Basic validation (consider adding more checks as needed)
+    if (!user.email || !user.name) {
+      throw new Error('Email and Name are required fields.');
+    }
+
     const newUser = await databases.createDocument(
       appwriteConfig.databaseId,
       appwriteConfig.userCollectionId,
@@ -54,51 +62,30 @@ export async function saveUserToDB(user: {
 
     return newUser;
   } catch (error) {
-    console.log(error);
+    console.error('Error saving user to database:', error);
+    throw error; // Re-throw the error for handling in calling code
   }
 }
 
 // ============================== SIGN IN
-// export async function signInAccount(user: { email: string; password: string }) {
-//   try {
-//     const session = await account.createEmailPasswordSession(user.email, user.password);
-
-//     return true;
-//   } catch (error) {
-//     console.log(error);
-//   }
 export async function signInAccount(user: { email: string; password: string }) {
-  console.log(user);
-  
   try {
-    const session = await account.createEmailPasswordSession(user.email, user.password);
+    const session = await account.createEmailSession(user.email, user.password);
+
     return session;
   } catch (error) {
-    console.error(error);
-    if (error.code === 'TOO_MANY_REQUESTS') {
-      return {
-        success: false,
-        message: 'Too many login attempts. Please try again later.',
-      };
-    } else {
-      return {
-        success: false,
-        message: 'Login failed. Please check your credentials and try again.',
-      };
-    }
+    console.log(error);
   }
 }
+
 // ============================== GET ACCOUNT
 export async function getAccount() {
   try {
     const currentAccount = await account.get();
+
     return currentAccount;
   } catch (error) {
-    console.error(error);
-    return {
-      error: true,
-      message: 'Failed to retrieve account information.',
-    };
+    console.log(error);
   }
 }
 
@@ -186,17 +173,19 @@ export async function createPost(post: INewPost) {
 // ============================== UPLOAD FILE
 export async function uploadFile(file: File) {
   try {
+    // Assuming 'storage' is an initialized Appwrite Storage object
     const uploadedFile = await storage.createFile(
-      appwriteConfig.storageId,
+      appwriteConfig.storageId, // Replace with your storage bucket ID
       ID.unique(),
       file
     );
-
+    console.log(uploadedFile, 'uploadfile');
     return uploadedFile;
   } catch (error) {
     console.log(error);
   }
 }
+
 
 // ============================== GET FILE URL
 export function getFilePreview(fileId: string) {
@@ -394,14 +383,16 @@ export async function likePost(postId: string, likesArray: string[]) {
 
 // ============================== SAVE POST
 export async function savePost(userId: string, postId: string) {
+  console.log(userId,"userid");
+  
   try {
     const updatedPost = await databases.createDocument(
       appwriteConfig.databaseId,
       appwriteConfig.savesCollectionId,
       ID.unique(),
       {
-        user: userId,
-        post: postId,
+        users: userId,
+        posts: postId,
       }
     );
 

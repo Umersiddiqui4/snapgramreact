@@ -48,7 +48,7 @@ const SigninForm = () => {
       
           console.log('Logged in successfully:', session);
           form.reset();
-          // navigate('/');
+          navigate('/');
         } catch (error) {
           console.error('Signin or Login Error:', error);
           toast({ title: error.message || 'Signin or Login failed. Please try again.' });
