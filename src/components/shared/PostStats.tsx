@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import { checkIsLiked } from "@/lib/utils";
-import saved from "../../../public/assets/icons/saved.svg"
 import {
   useLikePost,
   useSavePost,
@@ -75,9 +74,9 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
     }
   };
 
-  const containerStyles = location.pathname.startsWith("/profile")
-    ? "w-full"
-    : "";
+  // const containerStyles = location.pathname.startsWith("/profile")
+  //   ? "w-full"
+  //   : "";
 
   return (
     <div className="flex justify-between items-center z-20">
