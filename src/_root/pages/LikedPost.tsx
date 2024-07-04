@@ -1,4 +1,4 @@
-import   Loader  from "../../components/shared/Loader";
+import   Loader  from "@/components/shared/Loader";
 import  GridPostList from "@/components/shared/GridPostList";
 import { useGetCurrentUser } from "@/lib/react-query/QueryAndMutation";
 

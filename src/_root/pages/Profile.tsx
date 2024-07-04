@@ -12,7 +12,7 @@ import  LikedPosts  from "@/_root/pages/LikedPost";
 import { useUserContext } from "@/context/AuthContext";
 import { useGetUserById } from "@/lib/react-query/QueryAndMutation";
 import GridPostList from "@/components/shared/GridPostList";
-import  Loader  from "../../components/shared/Loader";
+import  Loader  from "@/components/shared/Loader";
 
 interface StabBlockProps {
   value: string | number;

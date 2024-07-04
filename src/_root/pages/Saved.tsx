@@ -1,5 +1,5 @@
 
-import   Loader  from "../../components/shared/Loader";
+import   Loader  from "@/components/shared/Loader";
 import { useGetCurrentUser } from "@/lib/react-query/QueryAndMutation";
 import Gridsaves from "@/components/shared/Gridsaves";
 
