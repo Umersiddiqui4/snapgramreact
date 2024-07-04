@@ -11,8 +11,6 @@ type PostCardProps = {
 
 const PostCard = ({ post }: PostCardProps) => {
   const { user } = useUserContext();
-console.log(post,'post');
-console.log(user,"user");
 
   if (!post.creator) return;
 

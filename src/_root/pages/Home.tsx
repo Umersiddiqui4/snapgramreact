@@ -21,7 +21,6 @@ const Home = () => {
     isError: isErrorCreators,
   } = useGetUsers(10);
 
-  console.log(posts,'posts',isPostLoading,'isPostLoading');
   if (isErrorPosts || isErrorCreators) {
     return (
       <div className="flex flex-1">

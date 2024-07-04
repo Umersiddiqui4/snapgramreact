@@ -5,7 +5,7 @@ import Gridsaves from "@/components/shared/Gridsaves";
 
 const Saved = () => {
   const { data: currentUser } = useGetCurrentUser();
-  console.log(currentUser?.saves,'currentUser');
+  console.log(currentUser,'currentUser');
   
   if (!currentUser)
     return (
@@ -29,11 +29,11 @@ const Saved = () => {
           />
         </div>
       </div>
-      {currentUser.saves.length === 0 && (
+      {currentUser.save.length && currentUser.save.length === 0 && (
         <p className="text-light-4">No saves posts</p>
       )}
 
-      <Gridsaves posts={currentUser.saves} showStats={false} />
+      <Gridsaves posts={currentUser.save} showStats={false} />
     </div>
   );
 };

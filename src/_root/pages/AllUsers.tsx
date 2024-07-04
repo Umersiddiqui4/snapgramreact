@@ -14,9 +14,9 @@ const AllUsers = () => {
 
   }
   return (
-    <div className="container flex-center">
-       <div className="w-full post-container">
-        <h3 className="h3-bold text-light-1 ">All Users</h3>
+    <div className="container  ">
+       <div className="w-full mt-8 container">
+        <h3 className="h3-bold text-light-1 mt-2 mb-5 ">All Users</h3>
         {isUserLoading && !creators ? (
           <Loader />
         ) : (

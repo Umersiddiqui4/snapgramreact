@@ -20,7 +20,6 @@ export async function createUserAccount(user: INewUser) {
     if (!newAccount) throw Error;
 
     const avatarUrl = avatars.getInitials(user.name);
-console.log(user,'user');
 
     const newUser = await saveUserToDB({
       accountId: newAccount.$id,
@@ -45,7 +44,6 @@ export async function saveUserToDB(user: {
   imageUrl: URL;
   username?: string;
 }) {
-  console.log(user,'usersave');
   
   try {
     // Basic validation (consider adding more checks as needed)
@@ -179,7 +177,6 @@ export async function uploadFile(file: File) {
       ID.unique(),
       file
     );
-    console.log(uploadedFile, 'uploadfile');
     return uploadedFile;
   } catch (error) {
     console.log(error);
@@ -383,7 +380,6 @@ export async function likePost(postId: string, likesArray: string[]) {
 
 // ============================== SAVE POST
 export async function savePost(userId: string, postId: string) {
-  console.log(userId,"userid");
   
   try {
     const updatedPost = await databases.createDocument(
@@ -391,8 +387,8 @@ export async function savePost(userId: string, postId: string) {
       appwriteConfig.savesCollectionId,
       ID.unique(),
       {
-        users: userId,
-        posts: postId,
+        user: userId,
+        post: postId,
       }
     );
 

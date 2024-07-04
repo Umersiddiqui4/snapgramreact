@@ -23,7 +23,6 @@ const LeftSidebar = () => {
     setUser(INITIAL_USER);
     navigate("/sign-in");
   }
-  console.log(isLoading,'isloading',user,'user');
   
 
   return (

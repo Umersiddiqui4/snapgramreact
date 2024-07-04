@@ -16,16 +16,15 @@ const Gridsaves = ({
   showStats = true,
 }: GridPostListProps) => {
   const { user } = useUserContext();
-console.log(posts,'posts');
-// console.log(user,'User');
+
 
   return (
     <ul className="grid-container">
       {posts.map((post) => (
         <li key={post.$id} className="relative min-w-80 h-80">
-          <Link to={`/posts/${post.posts.$id}`} className="grid-post_link">
+          <Link to={`/posts/${post.post.$id}`} className="grid-post_link">
             <img
-              src={post.posts.imageUrl}
+              src={post.post.imageUrl}
               alt="post"
               className="h-full w-full object-cover"
             />
