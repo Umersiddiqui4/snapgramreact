@@ -3,7 +3,7 @@ import { Models } from "appwrite";
 // import { useToast } from "@/components/ui/use-toast";
 // import { Loader, PostCard, UserCard } from "@/components/shared";
 import { useGetRecentPosts, useGetUsers } from "@/lib/react-query/QueryAndMutation";
-import  Loader  from "@/components/shared/Loader";
+import  Loader  from "../../components/shared/Loader";
 import UserCard from "@/components/shared/UseCard";
 import PostCard from "@/components/shared/PostCard";
 

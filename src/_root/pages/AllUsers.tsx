@@ -1,4 +1,4 @@
-import Loader from "@/components/shared/Loader";
+import Loader from "../../components/shared/Loader";
 import UserCard from "@/components/shared/UseCard";
 import { useGetUsers } from "@/lib/react-query/QueryAndMutation";
 

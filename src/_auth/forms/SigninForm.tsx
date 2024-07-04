@@ -6,7 +6,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage,
 import { Input } from '@/components/ui/input'
 import { SigninValidation } from '@/lib/validation'
 import { z } from 'zod'
-import Loader from '@/components/shared/Loader'
+import Loader from '../../components/shared/Loader'
 import { Link } from 'react-router-dom'
 // import { createUserAccount } from '@/lib/appwrite/Api'
 import { useToast } from "@/components/ui/use-toast"

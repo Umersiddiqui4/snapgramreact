@@ -28,7 +28,6 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
 
   const { data: currentUser } = useGetCurrentUser();
   let savedPostRecord = [];
-  console.log(currentUser,'surrentusrer');
   
   if(currentUser){
      savedPostRecord = currentUser?.save.find(
